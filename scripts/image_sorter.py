@@ -4,9 +4,8 @@ import time
 
 start_time = time.time()
 
-output_path = "C:/Users/Ayen Wohlberg/Desktop/pixelsorter/testimg_generation/"
-#input_path = "C:/Users/Ayen Wohlberg/Desktop/pixelsorter/testimg_generation/custom_colors.png"
-input_path = "C:/Users/Ayen Wohlberg/Desktop/pixelsorter/testimg_generation/TestImg.png"
+output_path = "C:/Users/---" #where to put the ouputted image files
+input_path = "C:/Users/---" #your path to the input file + it's name
 
 inp_img = cv2.imread(input_path)
 width = inp_img.shape[1]
@@ -133,25 +132,6 @@ elapsed_time = time.time() - start_time
 print(f"time for stitching da shiat back togethaa: {elapsed_time:.2f} seconds")
 
 #------------------------------------------------------------------------
-
-
-'''
-print("-------------")
-print("-------------")
-print(new_image)
-print("-------------")
-#print(sorted_image)
-#print("-------------")
-#print(sums)
-print("-------------")
-#print(sorted_indices)
-
-#print(sums.shape[1])
-
-#print(new_mask)
-
-print(mask_sum)
-'''
 
 # Save the result image
 cv2.imwrite(output_path + "sorted_with_mask.png", result_img)
