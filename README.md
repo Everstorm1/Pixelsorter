@@ -10,3 +10,6 @@ these outputs all use the specified output path. Play aound with thresholds.
 
 IMPORTANT:
 The input path needs to contain the image files name and file type (e.g. input_path = C:/users/desktop/random_folder/input_image.png")
+
+
+(and yes, ik the code is slow :(  )
