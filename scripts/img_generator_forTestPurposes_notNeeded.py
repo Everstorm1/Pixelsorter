@@ -17,8 +17,8 @@ custom_colors = [
     (0, 0, 0)
 ]
 
-output_path = "C:/Users/Ayen Wohlberg/Desktop/pixelsorter/testimg_generation/"
-input_path = "C:/Users/Ayen Wohlberg/Desktop/pixelsorter/testimg_generation/custom_colors.png"
+output_path = "C:/Users/"
+input_path = "C:/Users/"
 
 # Define the dimensions of the image
 width, height = 11, 2
