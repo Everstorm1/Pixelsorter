@@ -37,6 +37,10 @@ python3 image_sorter.py -h
 
 This neat little Command will output all available Arguments and Positionals.
 
+# Complete example console command:
+'''console
+python image_sorter.py --infile "C:\Users\...\example.jpg" override --lowerThreshold 200 --upperThreshold 600
+'''
 
 # Installation
 
