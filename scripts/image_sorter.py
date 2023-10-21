@@ -9,11 +9,11 @@ argparser = argparse.ArgumentParser()
 subp = argparser.add_subparsers(dest='command')
 
 values = subp.add_parser('--override', help='Override Thresholds of the Program [Optional]')
-values.add_argument('lowerThreshold', type=int, required=False)
-values.add_argument('upperThreshold', type=int, required=False)
+values.add_argument('--lowerThreshold', type=int)
+values.add_argument('--upperThreshold', type=int)
 
 argparser.add_argument('--infile', type=str, required=True, help="Path to the Input File of this Script")
-argparser.add_argument('--outfile', type=str, required=False, help="Path to the Output of this Script, defaults to [input]_processed.[extension]")
+argparser.add_argument('--outfile', type=str, required=False, help="Path to the Output of this Script, defaults to the Input Name")
 
 args = argparser.parse_args()
 
@@ -21,27 +21,28 @@ start_time = time.time()
 
 input_path = args.infile
 
-if args.outfile:
+if args.outfile is not None:
     output_path = args.outfile
 
 else:
-    basepath, extension = os.path.splitext(args.infile)
-    path = basepath + '_processed' + extension
-    output_path = path
+    output_path = input_path
+
+if args.command == 'override':
+    if args.lowerThreshold is not None:
+        lowerThreshold = args.lowerThreshold
+    else:
+        lowerThreshold = 320
 
 
-if args.lowerThreshold:
-    lowerThreshold = args.lowerThreshold
+    if args.upperThreshold is not None:
+        upperTheshold = args.upperThreshold
+
+    else:
+        upperTheshold = 500
+
 else:
     lowerThreshold = 320
-
-
-if args.upperThreshold:
-    upperTheshold = args.upperThreshold
-
-else:
     upperTheshold = 500
-
 
 inp_img = cv2.imread(input_path)
 width = inp_img.shape[1]
