@@ -8,7 +8,7 @@ import argparse
 argparser = argparse.ArgumentParser()
 subp = argparser.add_subparsers(dest='command')
 
-values = subp.add_parser('--override', help='Override Thresholds of the Program [Optional]')
+values = subp.add_parser('override', help='Override Thresholds of the Program [Optional]')
 values.add_argument('--lowerThreshold', type=int)
 values.add_argument('--upperThreshold', type=int)
 
