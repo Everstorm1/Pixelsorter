@@ -32,3 +32,17 @@ python3 image_sorter.py -h
 ```
 
 This neat little Command will output all available Arguments and Positionals.
+
+
+# Installation
+
+Installation of Dependencies is really simple with this Project as we went forward to create a neat `requirements.txt` file for you.
+
+1. Clone this Repository to your Machine, make sure to have Python installed.
+	If not you can get it [here](https://www.python.org/downloads/)
+2. Install the Required Dependencies
+	You can Install all required Dependencies with
+```console
+pip -r requirements.txt
+```
+3. Have Fun with the Script
