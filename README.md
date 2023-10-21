@@ -9,7 +9,7 @@ This is a single code file that takes any png/jpg files as inputs, creates a mas
 these outputs all use the specified output path. Play aound with thresholds. 
 
 IMPORTANT:
-The input path needs to contain the image files name and file type (e.g. input_path = C:/users/desktop/random_folder/input_image.png")
+The input path needs to contain the image files name and file type (e.g. input_path = "C:/users/desktop/random_folder/input_image.png")
 
 
 (and yes, ik the code is slow :(  )
@@ -21,6 +21,10 @@ Shown below are a simple Example Usage to this little Script and a Command to le
 ### Example Usage:
 ```console
 python3 image_sorter.py --infile example.jpeg
+```
+### Example Usage (if previous doesn't work in cmd):
+```console
+python image_sorter.py --infile "C:\Users\...\example.jpeg"
 ```
 
 This will create all Images from the Input-File `example.jpeg` and outputs the processed Immages with the Appropiate Suffixes.
