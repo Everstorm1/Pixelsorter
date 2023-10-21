@@ -25,7 +25,10 @@ if args.outfile is not None:
     output_path = args.outfile
 
 else:
-    output_path = input_path
+    output_path = os.path.dirname(input_path)
+
+if not output_path.endswith('\\'):
+    output_path += '\\'
 
 if args.command == 'override':
     if args.lowerThreshold is not None:
