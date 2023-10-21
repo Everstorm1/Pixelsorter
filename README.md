@@ -13,3 +13,36 @@ The input path needs to contain the image files name and file type (e.g. input_p
 
 
 (and yes, ik the code is slow :(  )
+
+
+# Usage
+
+Shown below are a simple Example Usage to this little Script and a Command to learn more about the available Arguments
+### Example Usage:
+```console
+python3 image_sorter.py --infile example.jpeg
+```
+
+This will create all Images from the Input-File `example.jpeg` and outputs the processed Immages with the Appropiate Suffixes.
+
+### Getting Help:
+
+```console
+python3 image_sorter.py -h
+```
+
+This neat little Command will output all available Arguments and Positionals.
+
+
+# Installation
+
+Installation of Dependencies is really simple with this Project as we went forward to create a neat `requirements.txt` file for you.
+
+1. Clone this Repository to your Machine, make sure to have Python installed.
+	If not you can get it [here](https://www.python.org/downloads/)
+2. Install the Required Dependencies
+	You can Install all required Dependencies with
+```console
+pip -r requirements.txt
+```
+3. Have Fun with the Script

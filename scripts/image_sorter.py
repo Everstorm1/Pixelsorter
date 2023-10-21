@@ -1,18 +1,54 @@
+import os.path
+
 import numpy as np
 import cv2
 import time
+import argparse
+
+argparser = argparse.ArgumentParser()
+subp = argparser.add_subparsers(dest='command')
+
+values = subp.add_parser('--override', help='Override Thresholds of the Program [Optional]')
+values.add_argument('--lowerThreshold', type=int)
+values.add_argument('--upperThreshold', type=int)
+
+argparser.add_argument('--infile', type=str, required=True, help="Path to the Input File of this Script")
+argparser.add_argument('--outfile', type=str, required=False, help="Path to the Output of this Script, defaults to the Input Name")
+
+args = argparser.parse_args()
 
 start_time = time.time()
 
-output_path = "C:/Users/---" #where to put the ouputted image files
-input_path = "C:/Users/---" #your path to the input file + it's name
+input_path = args.infile
+
+if args.outfile is not None:
+    output_path = args.outfile
+
+else:
+    output_path = input_path
+
+if args.command == 'override':
+    if args.lowerThreshold is not None:
+        lowerThreshold = args.lowerThreshold
+    else:
+        lowerThreshold = 320
+
+
+    if args.upperThreshold is not None:
+        upperTheshold = args.upperThreshold
+
+    else:
+        upperTheshold = 500
+
+else:
+    lowerThreshold = 320
+    upperTheshold = 500
 
 inp_img = cv2.imread(input_path)
 width = inp_img.shape[1]
 height = inp_img.shape[0]
 
-lowerThreshold = 320
-upperTheshold = 500
+
 
 new_image = np.zeros((height, width, 3), dtype=np.uint8)
 
