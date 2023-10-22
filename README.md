@@ -27,7 +27,7 @@ python3 image_sorter.py --infile example.jpeg
 python image_sorter.py --infile "C:\Users\...\example.jpeg"
 ```
 
-This will create all Images from the Input-File `example.jpeg` and outputs the processed Immages with the Appropiate Suffixes.
+This will create all Images from the Input-File `example.jpeg` and outputs the processed Images with the Appropiate Suffixes.
 
 ### Getting Help:
 
@@ -47,7 +47,7 @@ python image_sorter.py --infile "C:\Users\...\example.jpg" override --lowerThres
 
 Installation of Dependencies is really simple with this Project as we went forward to create a neat `requirements.txt` file for you.
 
-1. Clone this Repository to your Machine, make sure to have Python installed.
+1. Clone this Repository to your Machine, make sure to have Python3 installed.
 	If not you can get it [here](https://www.python.org/downloads/)
 2. Install the Required Dependencies
 	You can Install all required Dependencies with
