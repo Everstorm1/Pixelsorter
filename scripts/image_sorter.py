@@ -1,5 +1,7 @@
+from ast import arg
 import os.path
-
+from pickle import FALSE, TRUE
+import random
 import numpy as np
 import cv2
 import time
@@ -8,11 +10,15 @@ import argparse
 argparser = argparse.ArgumentParser()
 subp = argparser.add_subparsers(dest='command')
 
+argparser.add_argument('--infile', type=str, required=True, help="Path to the Input File of this Script")
+
 values = subp.add_parser('override', help='Override Thresholds of the Program [Optional]')
 values.add_argument('--lowerThreshold', type=int)
 values.add_argument('--upperThreshold', type=int)
 
-argparser.add_argument('--infile', type=str, required=True, help="Path to the Input File of this Script")
+values.add_argument('--noisy',type=bool , help='add random noise to the mask to make sorting less uniform [Optional]')
+values.add_argument('--noiseStrength', type=int)
+
 argparser.add_argument('--outfile', type=str, required=False, help="Path to the Output of this Script, defaults to the Input Name")
 
 args = argparser.parse_args()
@@ -47,6 +53,15 @@ else:
     lowerThreshold = 320
     upperTheshold = 500
 
+useNoise = False
+noisyness = 0
+if args.noisy is not None:
+    useNoise = args.noisy
+    if args.noiseStrength is not None:
+        noisyness = args.noiseStrength
+    else:
+        noisyness = 100
+
 inp_img = cv2.imread(input_path)
 width = inp_img.shape[1]
 height = inp_img.shape[0]
@@ -75,11 +90,26 @@ print(f"time for creating sorted IMG: {elapsed_time:.2f} seconds")
 cv2.imwrite(output_path + "sortedImg.png", sorted_image)
 
 #-----------------------------------------------------------
+#randomly generate number within range(noisyness). check if the number is 1, if yes: return bool noise == true, else false
+def noiseUsage():
+    noise = False
+
+    if useNoise == True:
+        x = random.randint(0, noisyness)
+        if x == 1:
+            noise = True
+            return noise
+        else:
+            return noise
+    else:
+        return noise
+#-----------------------------------------------------------
+
 
 new_mask = np.empty_like(new_image)
 for i in range(height):
     for a in range(width):
-        if lowerThreshold < sums[i][a] < upperTheshold:
+        if lowerThreshold < sums[i][a] < upperTheshold or noiseUsage() == True:
             new_mask[i][a][:] = (255, 255, 255)
         else:
             new_mask[i][a][:] = (0, 0, 0)
