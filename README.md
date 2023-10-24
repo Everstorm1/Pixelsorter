@@ -55,3 +55,8 @@ Installation of Dependencies is really simple with this Project as we went forwa
 pip -r requirements.txt
 ```
 3. Have Fun with the Script
+
+
+# !!!IMPORTANT!!!
+There still seems to be a unresolved issue with either creating the sorted pixel-row-snippets or integrating them into the original image based on the mask which can cause unwanted sorted pixel rows where otherwise the mask would be.
+this means concretely: "Lines"/solved rows even in masked areas.
