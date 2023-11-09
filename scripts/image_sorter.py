@@ -2,6 +2,7 @@ from ast import arg
 import os.path
 from pickle import FALSE, TRUE
 import random
+from xmlrpc.client import boolean
 import numpy as np
 import cv2
 import time
@@ -16,7 +17,7 @@ values = subp.add_parser('override', help='Override Thresholds of the Program [O
 values.add_argument('--lowerThreshold', type=int)
 values.add_argument('--upperThreshold', type=int)
 
-values.add_argument('--noisy',type=bool , help='add random noise to the mask to make sorting less uniform [Optional]')
+values.add_argument('--noisy',type=str , help='add random noise to the mask to make sorting less uniform [Optional]')
 values.add_argument('--noiseStrength', type=int)
 
 argparser.add_argument('--outfile', type=str, required=False, help="Path to the Output of this Script, defaults to the Input Name")
@@ -54,11 +55,13 @@ else:
     upperTheshold = 500
 
 useNoise = False
-noisyness = 0
+noisyness = 100
 if args.noisy is not None:
-    useNoise = args.noisy
+    useNoise = args.noisy.lower() == 'true'
+    print("noise set to: " + str(useNoise))
     if args.noiseStrength is not None:
         noisyness = args.noiseStrength
+        print("noise strength set to: " + str(noisyness))
     else:
         noisyness = 100
 
