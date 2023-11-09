@@ -204,6 +204,7 @@ elapsed_time = time.time() - start_time
 print(f"time for stitching da shiat back togethaa: {elapsed_time:.2f} seconds")
 
 #------------------------------------------------------------------------
+#Gezeichnet Ole 2023
 
 # Save the result image
 cv2.imwrite(output_path + "sorted_with_mask.png", result_img)
